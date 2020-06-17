@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="movie_list_img_height">175dp</dimen>
+    <dimen name="list_title_margin">8dp</dimen>
+    <dimen name="search_view_margin">8dp</dimen>
+    <dimen name="image_height_detail_screen">240dp</dimen>
+    <dimen name="title_margin_left">4dp</dimen>
+    <dimen name="app_bar_height">300dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

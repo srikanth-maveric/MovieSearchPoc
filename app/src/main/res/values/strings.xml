@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Movie Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_list_message">"Search For Movie Title "</string>
+    <string name="movie_image_cd">Movie Image</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="score">Score</string>
+    <string name="rating">Rating</string>
+    <string name="popularity">Popularity</string>
+    <string name="director">Director:</string>
+    <string name="writer">Writer:</string>
+    <string name="actor">Actor:</string>
+    <string name="search">Search</string>
+    <string name="searchHint">Search for Movie title</string>
+    <string name="error_movie_list">Error Fetching Data or Invalid Search Input</string>
+    <string name="error_movie_detail">Error Fetching Data</string>
+    <string name="movie_video_text">Video is coming soon!!!</string>
+    <string name="action">Action</string>
+    <string name="movie_list">Movie List</string>
+    <string name="toolbar_image">image</string>
+    <string name="movie_image">Movie Image</string>
+</resources>
