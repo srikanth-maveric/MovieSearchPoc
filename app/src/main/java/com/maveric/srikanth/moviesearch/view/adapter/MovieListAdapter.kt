@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.maveric.srikanth.moviesearch.R
-import com.maveric.srikanth.moviesearch.model.Movies
-import com.maveric.srikanth.moviesearch.util.getProgressDrawable
-import com.maveric.srikanth.moviesearch.util.loadImage
+import com.maveric.srikanth.moviesearch.model.dto.Movies
+import com.maveric.srikanth.moviesearch.view.util.getProgressDrawable
+import com.maveric.srikanth.moviesearch.view.util.loadImage
 import com.maveric.srikanth.moviesearch.view.fragments.ListFragmentDirections
 import kotlinx.android.synthetic.main.view_movie_item.view.*
 

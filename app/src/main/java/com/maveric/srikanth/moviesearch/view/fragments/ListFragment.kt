@@ -10,8 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.maveric.srikanth.moviesearch.R
-import com.maveric.srikanth.moviesearch.util.GridItemDecoration
-import com.maveric.srikanth.moviesearch.util.PaginationScrollListener
+import com.maveric.srikanth.moviesearch.view.util.GridItemDecoration
+import com.maveric.srikanth.moviesearch.view.util.PaginationScrollListener
 import com.maveric.srikanth.moviesearch.view.adapter.MovieListAdapter
 import com.maveric.srikanth.moviesearch.viewmodel.MovieListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*

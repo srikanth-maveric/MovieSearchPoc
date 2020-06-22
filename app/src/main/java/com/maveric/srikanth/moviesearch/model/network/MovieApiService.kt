@@ -1,5 +1,7 @@
-package com.maveric.srikanth.moviesearch.model
+package com.maveric.srikanth.moviesearch.model.network
 
+import com.maveric.srikanth.moviesearch.model.dto.MovieDetailResponse
+import com.maveric.srikanth.moviesearch.model.dto.MovieListResponse
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -22,7 +24,9 @@ class MovieApiService {
         .create(MoviesApi::class.java)
 
     fun getMovies(movieTitle: String, pageNumber: Int): Single<MovieListResponse> {
-        return api.getMovieList(API_KEY, movieTitle, TYPE, pageNumber)
+        return api.getMovieList(
+            API_KEY, movieTitle,
+            TYPE, pageNumber)
     }
 
     fun getMovieDetail(movieId: String): Single<MovieDetailResponse> {

@@ -2,8 +2,8 @@ package com.maveric.srikanth.moviesearch.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.maveric.srikanth.moviesearch.model.MovieApiService
-import com.maveric.srikanth.moviesearch.model.MovieDetailResponse
+import com.maveric.srikanth.moviesearch.model.network.MovieApiService
+import com.maveric.srikanth.moviesearch.model.dto.MovieDetailResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -11,7 +11,8 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieDetailViewModel : ViewModel() {
 
-    private val movieApiService = MovieApiService()
+    private val movieApiService =
+        MovieApiService()
     private val compositeDisposable = CompositeDisposable()
 
     val movieDetail = MutableLiveData<MovieDetailResponse>()

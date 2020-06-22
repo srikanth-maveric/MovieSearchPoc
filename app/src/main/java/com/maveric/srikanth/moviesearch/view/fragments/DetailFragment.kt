@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.maveric.srikanth.moviesearch.R
-import com.maveric.srikanth.moviesearch.model.MovieDetailResponse
-import com.maveric.srikanth.moviesearch.util.getProgressDrawable
-import com.maveric.srikanth.moviesearch.util.loadImage
+import com.maveric.srikanth.moviesearch.model.dto.MovieDetailResponse
+import com.maveric.srikanth.moviesearch.view.util.getProgressDrawable
+import com.maveric.srikanth.moviesearch.view.util.loadImage
 import com.maveric.srikanth.moviesearch.viewmodel.MovieDetailViewModel
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 

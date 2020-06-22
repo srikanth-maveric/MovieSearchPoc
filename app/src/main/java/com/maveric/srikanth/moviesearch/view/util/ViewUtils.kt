@@ -1,4 +1,4 @@
-package com.maveric.srikanth.moviesearch.util
+package com.maveric.srikanth.moviesearch.view.util
 
 import android.content.Context
 import android.widget.ImageView

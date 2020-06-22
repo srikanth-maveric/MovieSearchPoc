@@ -1,5 +1,7 @@
-package com.maveric.srikanth.moviesearch.model
+package com.maveric.srikanth.moviesearch.model.network
 
+import com.maveric.srikanth.moviesearch.model.dto.MovieDetailResponse
+import com.maveric.srikanth.moviesearch.model.dto.MovieListResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

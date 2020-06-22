@@ -1,4 +1,4 @@
-package com.maveric.srikanth.moviesearch.model
+package com.maveric.srikanth.moviesearch.model.dto
 
 import com.google.gson.annotations.SerializedName
 
