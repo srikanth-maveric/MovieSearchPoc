@@ -52,6 +52,7 @@ class ListFragment : Fragment() {
             addItemDecoration(GridItemDecoration(20, 2))
             adapter = movieListAdapter
         }
+        movieSearchView.setBackgroundResource(R.drawable.round_searchview_bg);
         movieSearchView.setIconifiedByDefault(false)
         movieSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
