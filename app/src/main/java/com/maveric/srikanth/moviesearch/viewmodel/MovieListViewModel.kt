@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.maveric.srikanth.moviesearch.model.MovieApiService
 import com.maveric.srikanth.moviesearch.model.MovieListResponse
-import com.maveric.srikanth.moviesearch.model.Movies
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -14,7 +13,7 @@ class MovieListViewModel : ViewModel() {
     private val movieApiService = MovieApiService()
     private val compositeDisposable = CompositeDisposable()
 
-    val movieList = MutableLiveData<List<Movies>>()
+    val movieListResponse = MutableLiveData<MovieListResponse>()
     val movieListLoadError = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
@@ -27,7 +26,7 @@ class MovieListViewModel : ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<MovieListResponse>() {
                     override fun onSuccess(movieListResponse: MovieListResponse) {
-                        movieList.value = movieListResponse.movieList
+                        this@MovieListViewModel.movieListResponse.value = movieListResponse
                         movieListLoadError.value = false
                         loading.value = false
                     }

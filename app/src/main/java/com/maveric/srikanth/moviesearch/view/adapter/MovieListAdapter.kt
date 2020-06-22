@@ -39,8 +39,13 @@ class MovieListAdapter(private val movieList: ArrayList<Movies>) :
     }
 
     fun updateMovieList(updatedMovieList: List<Movies>) {
-        movieList.clear()
+        //movieList.clear()
         movieList.addAll(updatedMovieList)
+        notifyDataSetChanged()
+    }
+
+    fun clearMovieList(){
+        movieList.clear()
         notifyDataSetChanged()
     }
 }
