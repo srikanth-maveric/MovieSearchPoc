@@ -18,7 +18,7 @@ class MovieListViewModel : ViewModel() {
     val movieListLoadError = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
-    fun refresh(movieTitle: String, pageNumber: Int) {
+    fun fetchMovieList(movieTitle: String, pageNumber: Int) {
         loading.value = true
 
         compositeDisposable.add(

@@ -19,11 +19,11 @@ import kotlinx.android.synthetic.main.fragment_list.*
 class ListFragment : Fragment() {
     private lateinit var viewModel: MovieListViewModel
     private val movieListAdapter = MovieListAdapter(arrayListOf())
+    private var mSearchText = "Marvel"
 
-/*    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.show()
-    }*/
+    companion object {
+        private var initialPageCount = 1
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,25 +41,23 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MovieListViewModel::class.java)
-        viewModel.refresh("Marvel", 1)
+        viewModel.fetchMovieList(mSearchText, initialPageCount)
+        initViews()
+        observeViewModel()
+    }
 
+    private fun initViews() {
         movieRecyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)
             addItemDecoration(GridItemDecoration(20, 2))
             adapter = movieListAdapter
         }
-
-        initViews()
-
-        observeViewModel()
-    }
-
-    private fun initViews() {
         movieSearchView.setIconifiedByDefault(false)
         movieSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    viewModel.refresh(it, 1)
+                    mSearchText = it
+                    viewModel.fetchMovieList(it, initialPageCount)
                 }
                 return false
             }
@@ -68,6 +66,7 @@ class ListFragment : Fragment() {
                 return true
             }
         })
+        movieSearchView.setQuery(mSearchText, false)
     }
 
     private fun observeViewModel() {
