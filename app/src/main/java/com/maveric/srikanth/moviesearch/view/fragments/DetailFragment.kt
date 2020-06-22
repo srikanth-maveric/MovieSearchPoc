@@ -12,18 +12,8 @@ import com.maveric.srikanth.moviesearch.model.MovieDetailResponse
 import com.maveric.srikanth.moviesearch.util.getProgressDrawable
 import com.maveric.srikanth.moviesearch.util.loadImage
 import com.maveric.srikanth.moviesearch.viewmodel.MovieDetailViewModel
-import kotlinx.android.synthetic.main.fragment_detail.header_image
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.android.synthetic.main.layout_movie_details.tv_actor
-import kotlinx.android.synthetic.main.layout_movie_details.tv_director
-import kotlinx.android.synthetic.main.layout_movie_details.tv_duration
-import kotlinx.android.synthetic.main.layout_movie_details.tv_genre
-import kotlinx.android.synthetic.main.layout_movie_details.tv_popularity
-import kotlinx.android.synthetic.main.layout_movie_details.tv_rating
-import kotlinx.android.synthetic.main.layout_movie_details.tv_reviews
-import kotlinx.android.synthetic.main.layout_movie_details.tv_score
-import kotlinx.android.synthetic.main.layout_movie_details.tv_synopsis
-import kotlinx.android.synthetic.main.layout_movie_details.tv_writer
+
 
 class DetailFragment : Fragment() {
 

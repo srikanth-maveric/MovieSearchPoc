@@ -18,7 +18,7 @@
         android:id="@+id/detailFragment"
         android:name="com.maveric.srikanth.moviesearch.view.fragments.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_movie_detail" >
         <argument
             android:name="movieId"
             app:argType="string"
