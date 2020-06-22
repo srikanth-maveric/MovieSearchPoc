@@ -15,10 +15,10 @@ class MovieListViewModel : ViewModel() {
 
     val movieListResponse = MutableLiveData<MovieListResponse>()
     val movieListLoadError = MutableLiveData<Boolean>()
-    val loading = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
 
     fun fetchMovieList(movieTitle: String, pageNumber: Int) {
-        loading.value = true
+        isLoading.value = true
 
         compositeDisposable.add(
             movieApiService.getMovies(movieTitle, pageNumber)
@@ -28,12 +28,15 @@ class MovieListViewModel : ViewModel() {
                     override fun onSuccess(movieListResponse: MovieListResponse) {
                         this@MovieListViewModel.movieListResponse.value = movieListResponse
                         movieListLoadError.value = false
-                        loading.value = false
+                        isLoading.value = false
+                        if (movieListResponse.movieList.isNullOrEmpty()) {
+                            movieListLoadError.value = true
+                        }
                     }
 
                     override fun onError(e: Throwable) {
                         movieListLoadError.value = true
-                        loading.value =false
+                        isLoading.value = false
                         e.printStackTrace()
                     }
 

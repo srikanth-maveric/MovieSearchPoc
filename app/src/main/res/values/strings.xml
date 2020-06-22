@@ -2,7 +2,7 @@
     <string name="app_name">Movie Search</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="empty_list_message">"Search For Movie Title "</string>
+    <string name="empty_list_message">"No results!! Search For Movie Title "</string>
     <string name="movie_image_cd">Movie Image</string>
 
     <string name="action_settings">Settings</string>

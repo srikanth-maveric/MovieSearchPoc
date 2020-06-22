@@ -68,7 +68,7 @@ class ListFragment : Fragment() {
 
                 override fun isAllItemsFetched() = mIsAllItemsFetched
 
-                override fun isLoading() = mViewModel.loading.value ?: false
+                override fun isLoading() = mViewModel.isLoading.value ?: false
 
             })
         }
@@ -100,9 +100,10 @@ class ListFragment : Fragment() {
     * */
     private fun observeViewModel() {
         mViewModel.movieListResponse.observe(viewLifecycleOwner, Observer { movieListResponse ->
-            movieListResponse?.let {
+            movieListResponse?.movieList?.let {
                 mMovieListAdapter.updateMovieList(movieListResponse.movieList)
-                mIsAllItemsFetched = mMovieListAdapter.itemCount >= movieListResponse.totalResults
+                mIsAllItemsFetched =
+                    mMovieListAdapter.itemCount >= movieListResponse.totalResults
             }
         })
 
@@ -112,7 +113,7 @@ class ListFragment : Fragment() {
             }
         })
 
-        mViewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
+        mViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
             isLoading?.let {
                 if (isLoading) {
                     listProgressBar.visibility = View.VISIBLE

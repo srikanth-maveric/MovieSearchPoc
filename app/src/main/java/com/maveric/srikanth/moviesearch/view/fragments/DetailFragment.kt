@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -13,10 +12,8 @@ import com.maveric.srikanth.moviesearch.model.MovieDetailResponse
 import com.maveric.srikanth.moviesearch.util.getProgressDrawable
 import com.maveric.srikanth.moviesearch.util.loadImage
 import com.maveric.srikanth.moviesearch.viewmodel.MovieDetailViewModel
-import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_detail.header_image
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.android.synthetic.main.layout_movie_details.*
 import kotlinx.android.synthetic.main.layout_movie_details.tv_actor
 import kotlinx.android.synthetic.main.layout_movie_details.tv_director
 import kotlinx.android.synthetic.main.layout_movie_details.tv_duration
@@ -31,11 +28,6 @@ import kotlinx.android.synthetic.main.layout_movie_details.tv_writer
 class DetailFragment : Fragment() {
 
     private lateinit var viewModel: MovieDetailViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.hide()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +46,10 @@ class DetailFragment : Fragment() {
         observeViewModel()
     }
 
+
+    /*
+    * Observing LiveData members in ViewModel and handing respective UI changes
+    * */
     private fun observeViewModel() {
         viewModel.movieDetail.observe(viewLifecycleOwner, Observer { movieDetailResponse ->
             movieDetailResponse?.let {

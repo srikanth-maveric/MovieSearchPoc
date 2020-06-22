@@ -3,7 +3,7 @@ package com.maveric.srikanth.moviesearch.model
 import com.google.gson.annotations.SerializedName
 
 data class MovieListResponse(
-    @SerializedName("Search") val movieList: List<Movies>,
+    @SerializedName("Search") val movieList: List<Movies>?,
     @SerializedName("totalResults") val totalResults: Int,
     @SerializedName("Response") val response: Boolean
 )
