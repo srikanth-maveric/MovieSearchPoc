@@ -2,25 +2,30 @@ package com.maveric.srikanth.moviesearch.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.maveric.srikanth.moviesearch.model.network.MovieApiService
+import com.maveric.srikanth.moviesearch.di.DaggerViewModelComponent
 import com.maveric.srikanth.moviesearch.model.dto.MovieDetailResponse
+import com.maveric.srikanth.moviesearch.model.network.MovieApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class MovieDetailViewModel : ViewModel() {
 
-    private val movieApiService =
-        MovieApiService()
-    private val compositeDisposable = CompositeDisposable()
+    @Inject
+    lateinit var movieApiService: MovieApiService
 
+    private val compositeDisposable = CompositeDisposable()
     val movieDetail = MutableLiveData<MovieDetailResponse>()
     val movieDetailLoadError = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
-    fun fetchMovieDetail(movieId: String) {
+    init {
+        DaggerViewModelComponent.create().inject(this)
+    }
 
+    fun fetchMovieDetail(movieId: String) {
         loading.value = true
 
         compositeDisposable.add(

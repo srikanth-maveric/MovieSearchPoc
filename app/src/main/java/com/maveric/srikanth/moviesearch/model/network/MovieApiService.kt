@@ -1,32 +1,31 @@
 package com.maveric.srikanth.moviesearch.model.network
 
+import com.maveric.srikanth.moviesearch.di.DaggerApiComponent
 import com.maveric.srikanth.moviesearch.model.dto.MovieDetailResponse
 import com.maveric.srikanth.moviesearch.model.dto.MovieListResponse
 import io.reactivex.Single
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 class MovieApiService {
 
-    private companion object {
+    companion object {
         const val API_KEY = "b9bd48a6"
         const val BASE_URL = "http://www.omdbapi.com/"
         const val TYPE = "movie"
     }
 
+    @Inject
+    lateinit var api: MoviesApi
 
-    private val api = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
-        .create(MoviesApi::class.java)
+    init {
+        DaggerApiComponent.create().inject(this)
+    }
 
     fun getMovies(movieTitle: String, pageNumber: Int): Single<MovieListResponse> {
         return api.getMovieList(
             API_KEY, movieTitle,
-            TYPE, pageNumber)
+            TYPE, pageNumber
+        )
     }
 
     fun getMovieDetail(movieId: String): Single<MovieDetailResponse> {
