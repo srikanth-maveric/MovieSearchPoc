@@ -2,21 +2,28 @@ package com.maveric.srikanth.moviesearch.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.maveric.srikanth.moviesearch.model.network.MovieApiService
+import com.maveric.srikanth.moviesearch.di.DaggerViewModelComponent
 import com.maveric.srikanth.moviesearch.model.dto.MovieListResponse
+import com.maveric.srikanth.moviesearch.model.network.MovieApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class MovieListViewModel : ViewModel() {
-    private val movieApiService =
-        MovieApiService()
-    private val compositeDisposable = CompositeDisposable()
 
+    @Inject
+    lateinit var movieApiService: MovieApiService
+
+    private val compositeDisposable = CompositeDisposable()
     val movieListResponse = MutableLiveData<MovieListResponse>()
     val movieListLoadError = MutableLiveData<Boolean>()
     val isLoading = MutableLiveData<Boolean>()
+
+    init {
+        DaggerViewModelComponent.create().inject(this)
+    }
 
     fun fetchMovieList(movieTitle: String, pageNumber: Int) {
         isLoading.value = true
