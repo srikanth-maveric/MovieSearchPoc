@@ -63,6 +63,7 @@ class MovieListViewModelTest {
 
         movieListViewModel.fetchMovieList(testMovieTitle, testPageNumber)
         val actualValue = movieListViewModel.movieListResponse.value?.movieList?.size
+
         actualValue?.let {
             Assert.assertEquals(1, it)
         }
