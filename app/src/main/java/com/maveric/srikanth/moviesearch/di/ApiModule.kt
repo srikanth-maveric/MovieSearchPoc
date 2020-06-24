@@ -9,7 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-class ApiModule {
+open class ApiModule {
 
     @Provides
     fun provideMoviesApi(): MoviesApi {
@@ -22,7 +22,7 @@ class ApiModule {
     }
 
     @Provides
-    fun provideMovieApiService(): MovieApiService{
+    open fun provideMovieApiService(): MovieApiService{
         return MovieApiService()
     }
 
