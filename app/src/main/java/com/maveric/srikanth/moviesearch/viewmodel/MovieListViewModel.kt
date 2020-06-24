@@ -11,7 +11,7 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MovieListViewModel : ViewModel() {
+class MovieListViewModel(private val isFromUnitTest: Boolean = false) : ViewModel() {
 
     @Inject
     lateinit var movieApiService: MovieApiService
@@ -22,7 +22,9 @@ class MovieListViewModel : ViewModel() {
     val isLoading = MutableLiveData<Boolean>()
 
     init {
-        DaggerViewModelComponent.create().inject(this)
+        if (!isFromUnitTest) {
+            DaggerViewModelComponent.create().inject(this)
+        }
     }
 
     fun fetchMovieList(movieTitle: String, pageNumber: Int) {
@@ -50,8 +52,6 @@ class MovieListViewModel : ViewModel() {
 
                 })
         )
-
-
     }
 
     override fun onCleared() {
