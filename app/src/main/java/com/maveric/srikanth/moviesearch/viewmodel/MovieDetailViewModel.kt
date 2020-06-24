@@ -19,14 +19,14 @@ class MovieDetailViewModel : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     val movieDetail = MutableLiveData<MovieDetailResponse>()
     val movieDetailLoadError = MutableLiveData<Boolean>()
-    val loading = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
 
     init {
         DaggerViewModelComponent.create().inject(this)
     }
 
     fun fetchMovieDetail(movieId: String) {
-        loading.value = true
+        isLoading.value = true
 
         compositeDisposable.add(
             movieApiService.getMovieDetail(movieId)
@@ -36,12 +36,12 @@ class MovieDetailViewModel : ViewModel() {
                     override fun onSuccess(movieListResponse: MovieDetailResponse) {
                         movieDetail.value = movieListResponse
                         movieDetailLoadError.value = false
-                        loading.value = false
+                        isLoading.value = false
                     }
 
                     override fun onError(e: Throwable) {
                         movieDetailLoadError.value = true
-                        loading.value = false
+                        isLoading.value = false
                         e.printStackTrace()
                     }
 
